@@ -14,3 +14,10 @@
 - [x] Add reduced-motion and non-layout-shifting AOS styles.
 - [x] Verify representative MPA pages and run the production build.
 - [ ] Save a checkpoint and deliver the animation update.
+
+## Story detail page
+
+- [ ] Add a dedicated story-detail renderer and direct HTML entry.
+- [ ] Connect the existing “Baca cerita” teaser to the article page.
+- [ ] Add article content, metadata, imagery, navigation, and responsive styling.
+- [ ] Verify the new MPA page and save a checkpoint.

@@ -226,6 +226,7 @@ export default defineConfig({
         program: path.resolve(import.meta.dirname, "client/program.html"),
         caraBelajar: path.resolve(import.meta.dirname, "client/cara-belajar.html"),
         cerita: path.resolve(import.meta.dirname, "client/cerita.html"),
+        ceritaKebun: path.resolve(import.meta.dirname, "client/cerita-kebun.html"),
         kontak: path.resolve(import.meta.dirname, "client/kontak.html"),
       },
     },
