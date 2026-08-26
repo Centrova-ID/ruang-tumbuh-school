@@ -82,3 +82,10 @@
 - [ ] Add vercel.json for the static MPA and clean directory URLs.
 - [ ] Validate the configuration and production build.
 - [ ] Save a checkpoint with self-deployment instructions.
+
+## Live deployment debugging
+
+- [ ] Inspect live domain response, DNS, and browser rendering.
+- [ ] Check Vercel deployment output and routing configuration.
+- [ ] Fix the deployment or MPA rewrite issue if needed.
+- [ ] Verify homepage and representative clean URLs live.
