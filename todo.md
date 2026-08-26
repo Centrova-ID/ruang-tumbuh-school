@@ -28,3 +28,12 @@
 - [ ] Update all internal links and active-navigation checks to clean paths.
 - [ ] Update Vite multi-page inputs and verify direct clean URLs.
 - [ ] Save a checkpoint after the clean URL build passes.
+
+## SEO and indexing
+
+- [ ] Add unique title, description, canonical, Open Graph, Twitter Card, and JSON-LD metadata per page.
+- [ ] Add natural Centrova portfolio positioning to relevant metadata and visible supporting copy.
+- [ ] Add image alt text, image metadata, and a sitemap image namespace.
+- [ ] Add robots.txt, sitemap.xml, and a social preview asset reference.
+- [ ] Verify SEO files, direct pages, and production build.
+- [ ] Save a checkpoint and deliver the indexing checklist.
