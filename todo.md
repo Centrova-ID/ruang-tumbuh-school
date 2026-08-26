@@ -89,3 +89,10 @@
 - [ ] Check Vercel deployment output and routing configuration.
 - [ ] Fix the deployment or MPA rewrite issue if needed.
 - [ ] Verify homepage and representative clean URLs live.
+
+## Cara Belajar responsive fix
+
+- [ ] Capture the page at mobile and tablet breakpoints and identify overflow or density issues.
+- [ ] Adjust responsive grid, typography, media, and spacing without animating wrappers.
+- [ ] Recheck direct MPA rendering and production build.
+- [ ] Save a checkpoint with the responsive fix.
