@@ -1,0 +1,36 @@
+{
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "outputDirectory": "dist/public",
+  "framework": null,
+  "trailingSlash": true,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/tentang/", "destination": "/tentang/index.html" },
+    { "source": "/program/", "destination": "/program/index.html" },
+    { "source": "/cara-belajar/", "destination": "/cara-belajar/index.html" },
+    { "source": "/cerita/", "destination": "/cerita/index.html" },
+    { "source": "/cerita-kebun/", "destination": "/cerita-kebun/index.html" },
+    { "source": "/kontak/", "destination": "/kontak/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/favicon.ico",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    }
+  ]
+}

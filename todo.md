@@ -76,3 +76,9 @@
 - [ ] Update app, SEO metadata, and sitemap image URLs to GitHub Raw.
 - [ ] Verify Raw URLs, browser rendering, and production build.
 - [ ] Save a checkpoint after the migration.
+
+## Vercel self-deployment
+
+- [ ] Add vercel.json for the static MPA and clean directory URLs.
+- [ ] Validate the configuration and production build.
+- [ ] Save a checkpoint with self-deployment instructions.
