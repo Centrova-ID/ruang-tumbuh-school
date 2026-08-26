@@ -52,3 +52,11 @@
 - [ ] Create and install favicon.ico plus modern favicon references.
 - [ ] Replace hardcoded old asset references in the app, metadata, and sitemap.
 - [ ] Verify all image paths and production output before checkpoint.
+
+## ImgBB asset migration
+
+- [ ] Upload the consolidated WebP image assets to ImgBB without exposing the API key.
+- [ ] Replace app image URLs with ImgBB direct image URLs.
+- [ ] Update SEO metadata and sitemap image URLs.
+- [ ] Verify remote image loading, favicon, and production build.
+- [ ] Save a checkpoint after successful migration.

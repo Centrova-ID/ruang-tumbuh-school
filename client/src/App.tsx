@@ -6,11 +6,11 @@ import { ArrowUpRight, CalendarDays, ChevronRight, Compass, Instagram, Menu, Map
 import './index.css';
 
 const img = {
-  hero: '/manus-storage/ruang-tumbuh-hero_78405e67.webp',
-  atelier: '/manus-storage/ruang-tumbuh-atelier_069110a6.webp',
-  library: '/manus-storage/ruang-tumbuh-library_94b88cf1.webp',
-  garden: '/manus-storage/ruang-tumbuh-garden_9a673631.webp',
-  mark: '/manus-storage/ruang-tumbuh-mark_d6992392.webp',
+  hero: 'https://i.ibb.co/cKWLdMw1/ruang-tumbuh-hero.webp',
+  atelier: 'https://i.ibb.co/Wpy7SRBc/ruang-tumbuh-atelier.webp',
+  library: 'https://i.ibb.co/yFJxJHHv/ruang-tumbuh-library.webp',
+  garden: 'https://i.ibb.co/99kMx0Zd/ruang-tumbuh-garden.webp',
+  mark: 'https://i.ibb.co/21HCX8xS/ruang-tumbuh-mark.webp',
 };
 
 const nav = [
