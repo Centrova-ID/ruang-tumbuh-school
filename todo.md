@@ -60,3 +60,11 @@
 - [ ] Update SEO metadata and sitemap image URLs.
 - [ ] Verify remote image loading, favicon, and production build.
 - [ ] Save a checkpoint after successful migration.
+
+## Image loading recovery
+
+- [ ] Confirm the ImgBB TLS failure and test supported alternate delivery hosts.
+- [ ] Implement a reliable fallback that does not depend on the failing host.
+- [ ] Update frontend, SEO metadata, and sitemap references.
+- [ ] Verify every visual asset in the browser and production build.
+- [ ] Save a recovery checkpoint.
