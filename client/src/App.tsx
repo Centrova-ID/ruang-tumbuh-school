@@ -20,11 +20,13 @@ const nav = [
 function Brand() { return <a href="/" className="brand"><img data-aos="fade-in" src={img.mark} alt="" /><span>ruang<br/><em>tumbuh</em></span></a>; }
 
 function Header() {
-  const [open, setOpen] = useState(false); const [scrolled, setScrolled] = useState(false); const location = window.location.pathname;
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = window.location.pathname;
   useEffect(() => { const fn = () => setScrolled(window.scrollY > 20); window.addEventListener('scroll', fn); return () => window.removeEventListener('scroll', fn); }, []);
   return <>
-    <header className={`site-header ${location !== '/' ? 'inner-header' : ''} ${scrolled ? 'is-scrolled' : ''}`}><Brand /><nav className="desktop-nav">{nav.map(([href, label]) => <a key={href} href={href} className={location === href ? 'active' : ''}>{label}</a>)}</nav><a className="header-cta" href="/kontak/">Kunjungi sekolah <ArrowUpRight size={16} /></a><button className="menu-toggle" aria-label="Buka menu" onClick={() => setOpen(true)}><Menu /></button></header>
-    {open && <div className="mobile-menu"><div className="mobile-menu-top"><Brand /><button onClick={() => setOpen(false)} aria-label="Tutup menu"><X /></button></div><nav>{nav.map(([href, label]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}<ChevronRight size={20}/></a>)}</nav><a href="/kontak/" className="button button-yellow" onClick={() => setOpen(false)}>Atur kunjungan <ArrowUpRight size={17}/></a></div>}
+    <header className={`site-header ${location !== '/' ? 'inner-header' : ''} ${scrolled ? 'is-scrolled' : ''}`}><Brand /><nav className="desktop-nav">{nav.map(([href, label]) => <a key={href} href={href} className={location === href ? 'active' : ''}>{label}</a>)}</nav><a className="header-cta" href="/kontak/">Kunjungi sekolah <ArrowUpRight size={16} /></a><button className="menu-toggle" aria-label="Buka menu" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(true)}><Menu /></button></header>
+    <div id="mobile-navigation" className={`mobile-menu ${open ? 'is-open' : ''}`} aria-hidden={!open}><div className="mobile-menu-top"><Brand /><button onClick={() => setOpen(false)} aria-label="Tutup menu"><X /></button></div><nav>{nav.map(([href, label], index) => <a key={href} href={href} onClick={() => setOpen(false)} style={{'--menu-index': index} as React.CSSProperties}>{label}<ChevronRight size={20}/></a>)}</nav><a href="/kontak/" className="button button-yellow mobile-menu-cta" onClick={() => setOpen(false)}>Atur kunjungan <ArrowUpRight size={17}/></a></div>
   </>;
 }
 

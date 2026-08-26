@@ -96,3 +96,10 @@
 - [ ] Adjust responsive grid, typography, media, and spacing without animating wrappers.
 - [ ] Recheck direct MPA rendering and production build.
 - [ ] Save a checkpoint with the responsive fix.
+
+## Mobile navbar animation
+
+- [x] Keep the mobile menu mounted so open and close transitions can complete.
+- [x] Add overlay, panel, link stagger, focus, and reduced-motion behavior.
+- [x] Verify the interaction at mobile width and run the production build.
+- [ ] Save a checkpoint with the navbar animation update.
