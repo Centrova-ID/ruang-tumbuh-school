@@ -45,3 +45,10 @@
 - [ ] Optimize JavaScript and font loading without changing the visual system.
 - [ ] Verify production build and representative page loading.
 - [ ] Save a performance checkpoint.
+
+## Deploy-safe assets and favicon
+
+- [ ] Consolidate the optimized WebP assets into one managed asset set.
+- [ ] Create and install favicon.ico plus modern favicon references.
+- [ ] Replace hardcoded old asset references in the app, metadata, and sitemap.
+- [ ] Verify all image paths and production output before checkpoint.
