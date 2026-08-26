@@ -1,5 +1,4 @@
 /* Ruang Tumbuh style reminder: playful-approachable education editorial; warm paper, ink navy, marigold, coral, cornflower; no generic SaaS gradients. */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 :root{--paper:#fffaf0;--navy:#172a4d;--blue:#779bd1;--yellow:#f6b73c;--coral:#ef765e;--ink:#172a4d;--line:rgba(23,42,77,.16);--shadow:7px 8px 0 rgba(23,42,77,.08)}

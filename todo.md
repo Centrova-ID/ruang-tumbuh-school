@@ -37,3 +37,11 @@
 - [ ] Add robots.txt, sitemap.xml, and a social preview asset reference.
 - [ ] Verify SEO files, direct pages, and production build.
 - [ ] Save a checkpoint and deliver the indexing checklist.
+
+## Performance optimization
+
+- [ ] Audit bundle, font, image, and analytics loading costs.
+- [ ] Add responsive image loading, lazy loading, and fetch priorities.
+- [ ] Optimize JavaScript and font loading without changing the visual system.
+- [ ] Verify production build and representative page loading.
+- [ ] Save a performance checkpoint.
