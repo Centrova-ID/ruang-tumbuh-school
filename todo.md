@@ -21,3 +21,10 @@
 - [ ] Connect the existing “Baca cerita” teaser to the article page.
 - [ ] Add article content, metadata, imagery, navigation, and responsive styling.
 - [ ] Verify the new MPA page and save a checkpoint.
+
+## Clean MPA URLs
+
+- [ ] Move each page entry into a directory index.html structure.
+- [ ] Update all internal links and active-navigation checks to clean paths.
+- [ ] Update Vite multi-page inputs and verify direct clean URLs.
+- [ ] Save a checkpoint after the clean URL build passes.

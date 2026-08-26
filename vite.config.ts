@@ -222,12 +222,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: path.resolve(import.meta.dirname, "client/index.html"),
-        tentang: path.resolve(import.meta.dirname, "client/tentang.html"),
-        program: path.resolve(import.meta.dirname, "client/program.html"),
-        caraBelajar: path.resolve(import.meta.dirname, "client/cara-belajar.html"),
-        cerita: path.resolve(import.meta.dirname, "client/cerita.html"),
-        ceritaKebun: path.resolve(import.meta.dirname, "client/cerita-kebun.html"),
-        kontak: path.resolve(import.meta.dirname, "client/kontak.html"),
+        tentang: path.resolve(import.meta.dirname, "client/tentang/index.html"),
+        program: path.resolve(import.meta.dirname, "client/program/index.html"),
+        caraBelajar: path.resolve(import.meta.dirname, "client/cara-belajar/index.html"),
+        cerita: path.resolve(import.meta.dirname, "client/cerita/index.html"),
+        ceritaKebun: path.resolve(import.meta.dirname, "client/cerita-kebun/index.html"),
+        kontak: path.resolve(import.meta.dirname, "client/kontak/index.html"),
       },
     },
   },
