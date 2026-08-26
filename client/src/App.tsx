@@ -1,42 +1,52 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
+/* Ruang Tumbuh style reminder: playful-approachable education editorial; Fraunces + DM Sans; bento cards, bright paper blocks, navy trust. */
+import { useEffect, useState } from 'react';
+import { Link, Route, Switch, useLocation } from 'wouter';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpRight, CalendarDays, Check, ChevronRight, Compass, Instagram, Menu, MapPin, Sparkles, X } from 'lucide-react';
+import './index.css';
 
+const img = {
+  hero: '/manus-storage/ruang-tumbuh-hero_d8ae1e4c.png',
+  atelier: '/manus-storage/ruang-tumbuh-atelier_b8d6b923.png',
+  library: '/manus-storage/ruang-tumbuh-library_e03ee86e.png',
+  garden: '/manus-storage/ruang-tumbuh-garden_f24b07c9.png',
+  mark: '/manus-storage/ruang-tumbuh-mark_93ac22a8.png',
+};
 
-function Router() {
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
-  );
+const nav = [
+  ['/tentang', 'Tentang'], ['/program', 'Program'], ['/cara-belajar', 'Cara belajar'], ['/cerita', 'Cerita'], ['/kontak', 'Kontak'],
+];
+
+function Brand() { return <Link href="/" className="brand"><img src={img.mark} alt="" /><span>ruang<br/><em>tumbuh</em></span></Link>; }
+
+function Header() {
+  const [open, setOpen] = useState(false); const [scrolled, setScrolled] = useState(false); const [location] = useLocation();
+  useEffect(() => { const fn = () => setScrolled(window.scrollY > 20); window.addEventListener('scroll', fn); return () => window.removeEventListener('scroll', fn); }, []);
+  return <>
+    <header className={`site-header ${location !== '/' ? 'inner-header' : ''} ${scrolled ? 'is-scrolled' : ''}`}><Brand /><nav className="desktop-nav">{nav.map(([href, label]) => <Link key={href} href={href} className={location === href ? 'active' : ''}>{label}</Link>)}</nav><Link className="header-cta" href="/kontak">Kunjungi sekolah <ArrowUpRight size={16} /></Link><button className="menu-toggle" aria-label="Buka menu" onClick={() => setOpen(true)}><Menu /></button></header>
+    <AnimatePresence>{open && <motion.div className="mobile-menu" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}><div className="mobile-menu-top"><Brand /><button onClick={() => setOpen(false)} aria-label="Tutup menu"><X /></button></div><nav>{nav.map(([href, label]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}<ChevronRight size={20}/></Link>)}</nav><Link href="/kontak" className="button button-yellow" onClick={() => setOpen(false)}>Atur kunjungan <ArrowUpRight size={17}/></Link></motion.div>}</AnimatePresence>
+  </>;
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
+function Footer() { return <footer><div className="footer-main"><div><Brand /><p className="footer-lead">Sekolah yang memberi ruang<br/>untuk anak bertanya, mencoba,<br/>lalu menemukan jalannya.</p></div><div className="footer-links"><div><strong>Jelajah</strong><Link href="/tentang">Tentang kami</Link><Link href="/program">Program</Link><Link href="/cara-belajar">Cara belajar</Link></div><div><strong>Temui kami</strong><p>Jl. Bukit Dago Selatan 18<br/>Bandung 40135</p><a href="mailto:halo@ruangtumbuh.sch.id">halo@ruangtumbuh.sch.id</a><a href="tel:+62222043181">+62 22 204 3181</a></div></div></div><div className="footer-bottom"><span>© 2026 Ruang Tumbuh. Dibangun dengan rasa ingin tahu.</span><span className="footer-social"><a href="#instagram" aria-label="Instagram"><Instagram size={16}/></a><a href="#maps" aria-label="Lokasi"><MapPin size={16}/></a></span></div></footer>; }
 
-function App() {
-  return (
-    <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
-  );
-}
+function Page({children, title, intro, accent='blue'}:{children:React.ReactNode;title:React.ReactNode;intro:string;accent?:string}) { return <><Header/><main className={`inner-page page-${accent}`}><section className="page-intro"><div><div className="page-mark"><img src={img.mark} alt=""/> Ruang Tumbuh, Bandung</div><h1>{title}</h1></div><p>{intro}</p></section>{children}</main><Footer/></>; }
 
-export default App;
+function Home() { return <><Header/><main><section className="hero"><div className="hero-copy"><div className="page-mark"><img src={img.mark} alt=""/> Sekolah dasar & menengah · Bandung</div><h1>Pertanyaan kecil.<br/><span>Dunia</span> yang<br/>terbuka lebar.</h1><p>Ruang Tumbuh adalah sekolah untuk anak-anak yang senang mencari tahu—belajar lewat proyek nyata, percakapan hangat, dan keberanian untuk mencoba lagi.</p><div className="hero-actions"><Link className="button button-yellow" href="/kontak">Kenali Ruang Tumbuh <ArrowUpRight size={18}/></Link><Link className="text-link light" href="/cara-belajar">Lihat cara kami belajar <ChevronRight size={18}/></Link></div></div><div className="hero-art"><img src={img.hero} alt="Anak-anak berkolaborasi membuat proyek di ruang kelas"/><div className="hero-note"><Sparkles size={16}/><span>Belajar dengan<br/><b>tangan, kepala, hati.</b></span></div></div><div className="hero-sticker">sejak<br/><strong>2014</strong></div></section>
+<section className="quick-grid"><div className="quick-intro"><span className="number">01</span><h2>Di sini, belajar<br/><i>terasa dekat.</i></h2><p>Kami tidak mengejar jawaban yang seragam. Kami merawat rasa ingin tahu sampai anak menemukan pertanyaannya sendiri.</p><Link className="text-link" href="/tentang">Cerita kami <ArrowUpRight size={17}/></Link></div><div className="quick-card yellow"><span className="number">02</span><h3>Project<br/>studio</h3><p>Matematika, sains, bahasa, dan seni bertemu dalam satu proyek yang bisa disentuh.</p><Link href="/program"><ArrowUpRight/></Link></div><div className="quick-card photo"><img src={img.atelier} alt="Tangan siswa membuat model kincir"/><span className="photo-caption">Yang dibuat tangan,<br/><b>lebih mudah diingat.</b></span></div><div className="quick-card navy"><Compass size={34}/><h3>Komunitas<br/>yang hadir</h3><p>Guru mengenal nama, cara berpikir, dan pertumbuhan setiap anak.</p><Link href="/cara-belajar">Jelajahi <ArrowUpRight size={16}/></Link></div></section>
+<section className="home-band"><div><span className="number">03</span><h2>Ruang untuk<br/><em>menjadi.</em></h2></div><div className="band-copy"><p>“Anak-anak tidak datang ke sekolah sebagai halaman kosong. Mereka datang membawa cerita, rasa penasaran, dan cara melihat dunia yang khas.”</p><span>— Mira, Kepala Sekolah</span><Link className="button button-outline" href="/tentang">Kenali pendekatan kami <ArrowUpRight size={17}/></Link></div></section>
+<section className="visit-strip"><img src={img.garden} alt="Siswa mengamati tanaman di kebun sekolah"/><div><span className="number">04</span><h2>Datang dan rasakan<br/>suasananya.</h2><p>Kunjungan sekolah dibuka setiap Rabu sore untuk keluarga yang ingin melihat kelas berjalan apa adanya.</p><Link className="button button-yellow" href="/kontak">Atur kunjungan <ArrowUpRight size={17}/></Link></div></section></main><Footer/></>; }
+
+function About(){return <Page title={<>Sekolah yang tumbuh<br/><span>bersama anak.</span></>} intro="Ruang Tumbuh berdiri pada 2014 dari keyakinan sederhana: pendidikan yang baik dimulai dari hubungan yang baik." accent="yellow"><section className="story-grid"><div className="story-photo"><img src={img.library} alt="Siswa membaca di perpustakaan"/><span>Perpustakaan lantai dua, tempat banyak ide bermula.</span></div><div className="story-text"><h2>Bukan hanya tentang apa yang dipelajari, tapi <em>siapa yang sedang tumbuh.</em></h2><p>Di lereng Dago, kami membangun sekolah kecil dengan perhatian yang besar. Anak-anak belajar dalam kelompok lintas usia, bertemu guru yang mengenal prosesnya, dan punya waktu untuk menyelesaikan sesuatu dengan tuntas.</p><p>Hari-hari kami diisi eksperimen, percakapan, kesalahan yang dibicarakan tanpa malu, dan momen ketika seseorang akhirnya berkata, “Oh, ternyata begini caranya.”</p><div className="stat-row"><div><strong>12</strong><span>tahun menemani<br/>anak bertumbuh</span></div><div><strong>18</strong><span>anak maksimal<br/>per kelompok</span></div></div></div></section><section className="quote-card"><Sparkles/><h2>“Kami ingin anak pulang membawa lebih banyak pertanyaan daripada saat ia datang.”</h2></section></Page>}
+
+const programs=[['Tumbuh Awal','Usia 4–6 tahun','Rasa aman, permainan bermakna, dan kebiasaan bertanya.'],['Sekolah Dasar','Kelas 1–6','Proyek lintas mata pelajaran yang berangkat dari dunia nyata.'],['Sekolah Menengah','Kelas 7–9','Riset, kolaborasi, dan ruang untuk memilih tantangan sendiri.']];
+function Programs(){return <Page title={<>Program yang<br/><span>mengajak bergerak.</span></>} intro="Setiap jenjang punya ritme yang berbeda. Yang sama: anak selalu menjadi pemilik proses belajarnya." accent="coral"><section className="program-list">{programs.map(([title,age,desc],i)=><motion.div className="program-item" key={title} whileHover={{x:8}}><span className="program-no">0{i+1}</span><div><h2>{title}</h2><span className="pill">{age}</span></div><p>{desc}</p><ArrowUpRight/></motion.div>)}</section><section className="program-callout"><div><span className="number">LAB</span><h2>Setiap Jumat,<br/><em>hari untuk membuat.</em></h2></div><img src={img.atelier} alt="Siswa mengerjakan proyek di studio"/></section></Page>}
+
+function Method(){return <Page title={<>Belajar bukan<br/><span>duduk diam.</span></>} intro="Kami merancang pengalaman belajar yang membuat anak bergerak dari rasa penasaran menuju karya yang bisa dibagikan." accent="blue"><section className="method-grid"><div className="method-large"><span className="number">01</span><h2>Mulai dari<br/><em>pertanyaan.</em></h2><p>“Mengapa bayangan berubah panjang?” bisa menjadi pelajaran tentang cahaya, pengukuran, dan cara menyampaikan temuan.</p></div><div className="method-small yellow"><span className="number">02</span><h3>Coba<br/>bersama</h3><p>Ide tumbuh lebih cepat saat dikerjakan bersama orang lain.</p></div><div className="method-small photo"><img src={img.garden} alt="Siswa belajar di kebun"/></div><div className="method-small navy"><span className="number">03</span><h3>Bagikan<br/>temuan</h3><p>Presentasi bukan ujian akhir, tapi kesempatan untuk didengar.</p></div></section><section className="steps"><div><span>01</span><b>Observe</b><p>Melihat dekat sebelum menyimpulkan.</p></div><div><span>02</span><b>Make</b><p>Membuat versi pertama, lalu mengujinya.</p></div><div><span>03</span><b>Reflect</b><p>Menamai apa yang berubah di dalam diri.</p></div></section></Page>}
+
+function Stories(){return <Page title={<>Yang tumbuh,<br/><span>punya cerita.</span></>} intro="Catatan kecil dari ruang kelas, kebun, studio, dan percakapan yang terus bergerak." accent="yellow"><section className="stories-grid"><article className="story-feature"><img src={img.garden} alt="Siswa di kebun sekolah"/><div><span>Jurnal kebun · 12 Mei 2026</span><h2>Ketika satu biji mengajarkan kami tentang kesabaran.</h2><Link className="text-link" href="/kontak">Baca cerita <ArrowUpRight size={17}/></Link></div></article><article className="story-note"><CalendarDays/><span>Agenda keluarga</span><h3>Open Studio<br/>Rabu, 16.00</h3><p>Lihat proyek yang sedang dikerjakan dan bertemu dengan guru pendamping.</p><Link href="/kontak">Daftar kunjungan <ArrowUpRight size={17}/></Link></article></section></Page>}
+
+function Contact(){return <Page title={<>Mari mulai dari<br/><span>sebuah kunjungan.</span></>} intro="Datang untuk melihat ruang kami, mendengar cerita guru, dan bertanya apa pun yang ingin Anda ketahui." accent="coral"><section className="contact-grid"><div className="contact-card"><span className="number">KUNJUNGAN SEKOLAH</span><h2>Rabu sore<br/>pukul 16.00</h2><p>Perjalanan singkat selama 60 menit bersama tim penerimaan kami. Anak-anak boleh ikut.</p><a className="button button-yellow" href="mailto:halo@ruangtumbuh.sch.id?subject=Kunjungan sekolah">Kirim minat kunjungan <ArrowUpRight size={18}/></a></div><form onSubmit={(e)=>e.preventDefault()}><label>Nama orang tua<input placeholder="Nama lengkap"/></label><label>Nama anak<input placeholder="Nama panggilan"/></label><label>Email atau WhatsApp<input placeholder="Untuk konfirmasi jadwal"/></label><button className="button button-navy" type="submit">Saya ingin berkunjung <ArrowUpRight size={18}/></button></form></section><section className="contact-address"><MapPin/><div><b>Ruang Tumbuh</b><p>Jl. Bukit Dago Selatan 18, Bandung 40135</p></div><a href="#maps">Buka peta <ArrowUpRight size={16}/></a></section></Page>}
+
+function NotFound(){return <Page title={<>Halaman ini sedang<br/><span>mencari jalan.</span></>} intro="Coba kembali ke beranda dan mulai dari sana."><Link className="button button-yellow" href="/">Kembali ke beranda <ArrowUpRight size={18}/></Link></Page>}
+export default function App(){ return <Switch><Route path="/" component={Home}/><Route path="/tentang" component={About}/><Route path="/program" component={Programs}/><Route path="/cara-belajar" component={Method}/><Route path="/cerita" component={Stories}/><Route path="/kontak" component={Contact}/><Route component={NotFound}/></Switch>; }
