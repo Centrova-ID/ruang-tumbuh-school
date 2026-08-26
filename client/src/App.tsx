@@ -6,11 +6,11 @@ import { ArrowUpRight, CalendarDays, ChevronRight, Compass, Instagram, Menu, Map
 import './index.css';
 
 const img = {
-  hero: '/manus-storage/ruang-tumbuh-hero_d8bf4b0a.webp',
-  atelier: '/manus-storage/ruang-tumbuh-atelier_b808319e.webp',
-  library: '/manus-storage/ruang-tumbuh-library_69a1dbae.webp',
-  garden: '/manus-storage/ruang-tumbuh-garden_ee072557.webp',
-  mark: '/manus-storage/ruang-tumbuh-mark_054a7ba5.webp',
+  hero: 'https://raw.githubusercontent.com/Centrova-ID/ruang-tumbuh-school/main/client/public/assets/ruang-tumbuh/ruang-tumbuh-hero.webp',
+  atelier: 'https://raw.githubusercontent.com/Centrova-ID/ruang-tumbuh-school/main/client/public/assets/ruang-tumbuh/ruang-tumbuh-atelier.webp',
+  library: 'https://raw.githubusercontent.com/Centrova-ID/ruang-tumbuh-school/main/client/public/assets/ruang-tumbuh/ruang-tumbuh-library.webp',
+  garden: 'https://raw.githubusercontent.com/Centrova-ID/ruang-tumbuh-school/main/client/public/assets/ruang-tumbuh/ruang-tumbuh-garden.webp',
+  mark: 'https://raw.githubusercontent.com/Centrova-ID/ruang-tumbuh-school/main/client/public/assets/ruang-tumbuh/ruang-tumbuh-mark.webp',
 };
 
 const nav = [

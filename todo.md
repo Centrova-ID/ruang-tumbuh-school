@@ -68,3 +68,11 @@
 - [ ] Update frontend, SEO metadata, and sitemap references.
 - [ ] Verify every visual asset in the browser and production build.
 - [ ] Save a recovery checkpoint.
+
+## GitHub Raw assets
+
+- [ ] Identify the connected repository and current branch.
+- [ ] Add optimized WebP assets under a stable repository asset folder.
+- [ ] Update app, SEO metadata, and sitemap image URLs to GitHub Raw.
+- [ ] Verify Raw URLs, browser rendering, and production build.
+- [ ] Save a checkpoint after the migration.
